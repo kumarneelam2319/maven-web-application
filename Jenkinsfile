@@ -1,7 +1,7 @@
 node
 {
  def mavenHome = tool name: "maven3.9.5"
- properties([pipelineTriggers([cron('* * * * *')])])
+ properties([buildDiscarder(logRotator(artifactDaysToKeepStr: '', artifactNumToKeepStr: '2', daysToKeepStr: '', numToKeepStr: '2')), pipelineTriggers([cron('* * * * *')])])
  stage('checkout')
  {
  git credentialsId: '8d8cda8c-1444-48df-9056-5050603b7880', url: 'https://github.com/kumarneelam2319/maven-web-application'
